@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
+
 @section('title', 'Daftar Event Fakultas MIPA')
 
+
 @section('faculty-name', 'MIPA')
+
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -13,6 +16,7 @@
     </a>
     @endauth
 </div>
+
 
 <div class="row">
     <div class="col-md-3 mb-4">
@@ -45,6 +49,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="col-md-9">
         @if(count($facultyEvents ?? []) > 0)
@@ -95,6 +100,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Delete Modal -->
             <div class="modal fade" id="deleteModal{{ $event['id'] }}" tabindex="-1">

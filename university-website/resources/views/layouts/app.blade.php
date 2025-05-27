@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +16,17 @@
         height: 100%;
     }
 
+
     .event-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
+
     .navbar-brand {
         font-weight: bold;
     }
+
 
     .footer {
         margin-top: 50px;
@@ -32,14 +36,13 @@
     </style>
 </head>
 
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container">
             <a class="navbar-brand" href="/">
-                @if(request()->is('university*'))
-                <i class="fas fa-university me-2"></i>Universitas @yield('university-name', 'Nusantara')
-                @endif
+                <i class="fas fa-university me-2"></i>Universitas @yield('university-name', 'Kota Praja')
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -50,12 +53,14 @@
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Beranda</a>
                     </li>
 
+
                     @if(request()->is('university*'))
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('university/events*') ? 'active' : '' }}"
                             href="/university/events">Event Universitas</a>
                     </li>
                     @endif
+
 
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
@@ -104,6 +109,7 @@
         </div>
     </nav>
 
+
     <!-- Main Content -->
     <main class="container py-4">
         @if(session('success'))
@@ -113,6 +119,7 @@
         </div>
         @endif
 
+
         @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('error') }}
@@ -120,8 +127,10 @@
         </div>
         @endif
 
+
         @yield('content')
     </main>
+
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 bg-light">
@@ -138,9 +147,11 @@
         </div>
     </footer>
 
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     @yield('scripts')
 </body>
+
 
 </html>

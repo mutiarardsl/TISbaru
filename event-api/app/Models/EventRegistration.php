@@ -5,17 +5,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventRegistration extends Model
 {
-protected $fillable = [
-'event_id','student_id','student_name','student_email','registration_date','status'
-];
+    protected $fillable = [
+        'event_id','student_id','student_name','student_email','registration_date','status'
+    ];
 
-// public function event()
-// {
-// return $this->belongsTo(Event);
-// }
+    protected $casts = [
+        'registration_date' => 'datetime',
+    ];
 
-public function category()
-{
-return $this->belongsTo(EventCategory::class);
-}
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

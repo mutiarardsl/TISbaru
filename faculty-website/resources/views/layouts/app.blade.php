@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +16,17 @@
         height: 100%;
     }
 
+
     .event-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
+
     .navbar-brand {
         font-weight: bold;
     }
+
 
     .footer {
         margin-top: 50px;
@@ -32,16 +36,13 @@
     </style>
 </head>
 
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container">
             <a class="navbar-brand" href="/">
-                @if(request()->is('faculty*'))
                 <i class="fas fa-graduation-cap me-2"></i>Fakultas @yield('faculty-name', 'MIPA')
-                @else
-                <i class="fas fa-university me-2"></i>Universitas @yield('university-name', 'Nusantara')
-                @endif
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -51,6 +52,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Beranda</a>
                     </li>
+
 
                     @if(request()->is('faculty*'))
                     <li class="nav-item">
@@ -67,6 +69,7 @@
                             href="/university/events">Event Universitas</a>
                     </li>
                     @endif
+
 
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
@@ -88,14 +91,16 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            @if(Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
+                            @if((Auth::user()->role == 'admin' || Auth::user()->role == 'staff') &&
+                            request()->is('faculty*'))
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item"
-                                    href="{{ request()->is('faculty*') ? route('faculty.events.create') : route('university.events.create') }}">Tambah
-                                    Event</a></li>
+                            <li><a class="dropdown-item" href="{{ route('faculty.events.create') }}">Tambah Event</a>
+                            </li>
                             @endif
+
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -115,6 +120,7 @@
         </div>
     </nav>
 
+
     <!-- Main Content -->
     <main class="container py-4">
         @if(session('success'))
@@ -124,6 +130,7 @@
         </div>
         @endif
 
+
         @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('error') }}
@@ -131,8 +138,10 @@
         </div>
         @endif
 
+
         @yield('content')
     </main>
+
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 bg-light">
@@ -142,16 +151,18 @@
                 @if(request()->is('faculty*'))
                 Fakultas @yield('faculty-name', 'MIPA')
                 @else
-                Universitas @yield('university-name', 'Nusantara')
+                Universitas @yield('university-name', 'Kota Praja')
                 @endif
             </p>
             <p class="text-muted mb-0">Integrasi Data - Laravel</p>
         </div>
     </footer>
 
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     @yield('scripts')
 </body>
+
 
 </html>

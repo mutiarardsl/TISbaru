@@ -48,6 +48,7 @@ class Authenticate
 
         return $next($request);
     }
+}
     // public function handle($request, Closure $next, $guard = null)
     // {
     //     if ($this->auth->guard($guard)->guest()) {
@@ -79,4 +80,4 @@ class Authenticate
         
     //     return in_array($key, $validKeys);
     // }
-}
+//}

@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
+
 @section('title', 'Tambah Event Fakultas')
 
+
 @section('faculty-name', 'MIPA')
+
 
 @section('content')
 <div class="card shadow-sm">
@@ -22,6 +25,7 @@
                     @enderror
                 </div>
 
+
                 <div class="col-md-6 mb-3">
                     <label for="location" class="form-label">Lokasi <span class="text-danger">*</span></label>
                     <input type="text" class="form-control @error('location') is-invalid @enderror" id="location"
@@ -30,6 +34,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
 
                 <div class="col-md-6 mb-3">
                     <label for="start_datetime" class="form-label">Waktu Mulai <span
@@ -41,6 +46,7 @@
                     @enderror
                 </div>
 
+
                 <div class="col-md-6 mb-3">
                     <label for="end_datetime" class="form-label">Waktu Selesai <span
                             class="text-danger">*</span></label>
@@ -50,6 +56,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
 
                 <div class="col-md-6 mb-3">
                     <label for="category_id" class="form-label">Kategori</label>
@@ -66,6 +73,7 @@
                     @enderror
                 </div>
 
+
                 <div class="col-md-6 mb-3">
                     <label for="quota" class="form-label">Kuota Peserta</label>
                     <input type="number" class="form-control @error('quota') is-invalid @enderror" id="quota"
@@ -74,6 +82,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
 
                 <div class="col-md-6 mb-3">
                     <label for="registration_deadline" class="form-label">Batas Pendaftaran</label>
@@ -86,6 +95,7 @@
                     @enderror
                 </div>
 
+
                 <div class="col-12 mb-3">
                     <label for="description" class="form-label">Deskripsi <span class="text-danger">*</span></label>
                     <textarea class="form-control @error('description') is-invalid @enderror" id="description"
@@ -95,6 +105,7 @@
                     @enderror
                 </div>
             </div>
+
 
             <div class="d-flex justify-content-between mt-3">
                 <a href="{{ route('faculty.events.index') }}" class="btn btn-secondary">

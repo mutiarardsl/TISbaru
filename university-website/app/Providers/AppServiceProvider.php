@@ -1,8 +1,11 @@
 <?php
 
+
 namespace App\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,8 +14,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Register EventApiService
+          $this->app->singleton(EventApiService::class, function ($app) {
+            return new EventApiService();
+        });
+
+
     }
+
 
     /**
      * Bootstrap any application services.

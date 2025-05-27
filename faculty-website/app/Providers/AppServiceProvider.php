@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+         // Register EventApiService
+          $this->app->singleton(EventApiService::class, function ($app) {
+            return new EventApiService();
+        });
     }
 
     /**

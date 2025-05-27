@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
+
 @section('title', 'Event Universitas')
 
+
 @section('faculty-name', 'MIPA')
+
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Event Universitas</h1>
 </div>
+
 
 <div class="row">
     <div class="col-md-3 mb-4">
@@ -40,6 +44,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="col-md-9">
         @if(count($universityEvents ?? []) > 0)

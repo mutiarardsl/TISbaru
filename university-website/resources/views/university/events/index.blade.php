@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Event Universitas Nusantara')
 
-@section('university-name', 'Nusantara')
+@section('title', 'Daftar Event Universitas Kota Praja')
+
+
+@section('university-name', 'Kota Praja')
+
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -13,6 +16,7 @@
     </a>
     @endauth
 </div>
+
 
 <div class="row">
     <div class="col-md-3 mb-4">
@@ -45,6 +49,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="col-md-9">
         @if(count($universityEvents ?? []) > 0)
@@ -81,6 +86,7 @@
                                 <i class="fas fa-info-circle me-1"></i> Detail
                             </a>
                             @auth
+                            @if(in_array(Auth::user()->role, ['admin', 'staff']))
                             <div class="btn-group">
                                 <a href="{{ route('university.events.edit', $event['id']) }}" class="btn btn-warning">
                                     <i class="fas fa-edit"></i>
@@ -90,11 +96,13 @@
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
+                            @endif
                             @endauth
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Delete Modal -->
             <div class="modal fade" id="deleteModal{{ $event['id'] }}" tabindex="-1">

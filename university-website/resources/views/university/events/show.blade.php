@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
+
 @section('title', $event['title'] . ' - Event Universitas')
 
-@section('university-name', 'Nusantara')
+
+@section('university-name', 'Kota Praja')
+
 
 @section('content')
 <div class="card shadow-sm mb-4">
@@ -18,7 +21,9 @@
                     </ol>
                 </nav>
 
+
                 <h1 class="mb-3">{{ $event['title'] }}</h1>
+
 
                 <div class="d-flex flex-wrap gap-3 mb-4">
                     <span class="badge bg-primary py-2 px-3">
@@ -34,6 +39,7 @@
                     @endif
                 </div>
 
+
                 <div class="mb-4">
                     <h5 class="text-primary"><i class="far fa-calendar-alt me-2"></i>Waktu Pelaksanaan</h5>
                     <p class="lead">
@@ -43,10 +49,12 @@
                     </p>
                 </div>
 
+
                 <div class="mb-4">
                     <h5 class="text-primary"><i class="fas fa-align-left me-2"></i>Deskripsi</h5>
                     <p>{!! nl2br(e($event['description'])) !!}</p>
                 </div>
+
 
                 @if(isset($event['registration_deadline']))
                 <div class="mb-4">
@@ -55,7 +63,9 @@
                 </div>
                 @endif
 
+
                 @auth
+                @if(in_array(Auth::user()->role, ['admin', 'staff']))
                 <div class="mt-4">
                     <div class="d-flex gap-2">
                         <a href="{{ route('university.events.edit', $event['id']) }}" class="btn btn-warning">
@@ -67,8 +77,10 @@
                         </button>
                     </div>
                 </div>
+                @endif
                 @endauth
             </div>
+
 
             <div class="col-md-4 mt-4 mt-md-0">
                 <div class="card border-primary mb-4">
@@ -105,6 +117,7 @@
                     </div>
                 </div>
 
+
                 <div class="card border-info">
                     <div class="card-header bg-info text-white">
                         <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informasi Tambahan</h5>
@@ -130,6 +143,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Registrants (if admin) -->
 @auth
@@ -178,6 +192,7 @@
     </div>
 </div>
 @endauth
+
 
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1">
